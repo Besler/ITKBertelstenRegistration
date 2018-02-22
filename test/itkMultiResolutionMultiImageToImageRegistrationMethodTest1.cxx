@@ -1,3 +1,20 @@
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
 
 #ifdef _MSC_VER
 #pragma warning ( disable : 4786 )
@@ -35,10 +52,10 @@ template <typename TFixedImage, typename TMovingImage>
 class RegistrationObserver : public itk::Command
 {
 public:
-typedef  RegistrationObserver     Self;
-typedef  itk::Command             Superclass;
-typedef  itk::SmartPointer<Self>  Pointer;
-itkNewMacro( Self );
+  typedef  RegistrationObserver     Self;
+  typedef  itk::Command             Superclass;
+  typedef  itk::SmartPointer<Self>  Pointer;
+  itkNewMacro( Self );
 
 protected:
   RegistrationObserver() {};
@@ -157,7 +174,7 @@ int main(int argc, char* argv[] )
 
   const unsigned int Dimensions = 3;
 
-  typedef itk::Image<short,Dimensions>   FixedImageType;
+  typedef itk::Image<short,Dimensions>  FixedImageType;
   typedef itk::Image<short,Dimensions>  MovingImageType;
   typedef itk::MultiResolutionMultiImageToImageRegistrationMethod<
     FixedImageType,MovingImageType >    RegistrationType;
@@ -273,8 +290,8 @@ int main(int argc, char* argv[] )
 // Create the interpolators
 //----------------------------------------------------------------------------
   typedef itk::PatchedRayCastInterpolateImageFunction<
-    MovingImageType, double> InterpolatorType;
-  typedef InterpolatorType::InputPointType FocalPointType;
+    MovingImageType, double>                InterpolatorType;
+  typedef InterpolatorType::InputPointType  FocalPointType;
 
   InterpolatorType::Pointer interpolatorAP = InterpolatorType::New();
   FocalPointType focalPointAP;

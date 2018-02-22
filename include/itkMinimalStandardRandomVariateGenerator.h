@@ -24,10 +24,8 @@
 #include "BertelstenRegistrationExport.h"
 #include "itkNormalVariateGenerator.h"
 
-namespace itk
-{
-namespace Statistics
-{
+namespace itk {
+namespace Statistics {
 /** \class MinimalStandardRandomVariateGenerator
  * \brief Linear congruential random random variate generator.
  *

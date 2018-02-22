@@ -24,8 +24,7 @@
 #include "itkImageScanlineIterator.h"
 #include "itkProgressReporter.h"
 
-namespace itk
-{
+namespace itk {
 
 template< typename TImage >
 NormalDistributionImageSource< TImage >

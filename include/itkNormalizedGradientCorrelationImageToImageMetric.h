@@ -1,6 +1,23 @@
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
 
-#ifndef __itkNormalizedGradientCorrelationImageToImageMetric_h
-#define __itkNormalizedGradientCorrelationImageToImageMetric_h
+#ifndef itkNormalizedGradientCorrelationImageToImageMetric_h
+#define itkNormalizedGradientCorrelationImageToImageMetric_h
 
 #include <itkImageToImageMetric.h>
 #include <itkSobelOperator.h>
@@ -8,8 +25,7 @@
 #include <itkResampleImageFilter.h>
 
 
-namespace itk
-{
+namespace itk {
 
 
 /** \class NormalizedGradientCorrelationImageToImageMetric
@@ -37,6 +53,8 @@ namespace itk
  * \warning Please note that the original implementation of the metric
  * averages the calculations made on each dimension, but this implementation
  * only sums them.
+ * 
+ * \ingroup BertelstenRegistration
  *
  */
 template < class TFixedImage, class TMovingImage >
@@ -66,20 +84,20 @@ public:
 //#else
 //  typedef typename Superclass::RealType                       RealType;
 //#endif
-  typedef typename Superclass::MovingImageType								MovingImageType;
-  typedef typename Superclass::MovingImagePixelType						MovingImagePixelType;
-  typedef typename Superclass::FixedImageType									FixedImageType;
+  typedef typename Superclass::MovingImageType                MovingImageType;
+  typedef typename Superclass::MovingImagePixelType           MovingImagePixelType;
+  typedef typename Superclass::FixedImageType                 FixedImageType;
 
-  typedef typename FixedImageType::PixelType						      FixedImagePixelType;
+  typedef typename FixedImageType::PixelType                  FixedImagePixelType;
   typedef ImageRegionConstIteratorWithIndex<FixedImageType>   FixedImageConstIteratorType;
 
-  typedef typename Superclass::FixedImageConstPointer					FixedImageConstPointer;
-  typedef typename Superclass::FixedImageRegionType						FixedImageRegionType;
-  typedef typename FixedImageRegionType::SizeType                       SizeType;
-  typedef typename Superclass::TransformType									TransformType;
-  typedef typename Superclass::TransformPointer								TransformPointer;
-  typedef typename Superclass::TransformParametersType				TransformParametersType;
-  typedef typename Superclass::TransformJacobianType					TransformJacobianType;
+  typedef typename Superclass::FixedImageConstPointer         FixedImageConstPointer;
+  typedef typename Superclass::FixedImageRegionType           FixedImageRegionType;
+  typedef typename FixedImageRegionType::SizeType             SizeType;
+  typedef typename Superclass::TransformType                  TransformType;
+  typedef typename Superclass::TransformPointer               TransformPointer;
+  typedef typename Superclass::TransformParametersType        TransformParametersType;
+  typedef typename Superclass::TransformJacobianType          TransformJacobianType;
 
   typedef  typename Superclass::InterpolatorType    InterpolatorType;
   typedef  typename Superclass::InterpolatorPointer InterpolatorPointer;
@@ -133,8 +151,8 @@ private:
   NormalizedGradientCorrelationImageToImageMetric(const Self&); //purposely not implemented
   void operator=(const Self&);                                  //purposely not implemented
 
-  double  m_DerivativeDelta;
-  unsigned int m_MaxDimension;
+  double        m_DerivativeDelta;
+  unsigned int  m_MaxDimension;
 
   /** The filter for transforming the moving images. */
   typename ResampleImageFilterType::Pointer m_ResampleImageFilter;
@@ -157,7 +175,7 @@ private:
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkNormalizedGradientCorrelationImageToImageMetric.txx"
+#include "itkNormalizedGradientCorrelationImageToImageMetric.hxx"
 #endif
 
 #endif

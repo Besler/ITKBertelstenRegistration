@@ -20,8 +20,7 @@
 
 #include "itkGenerateImageSource.h"
 
-namespace itk
-{
+namespace itk {
 
 /** \class NormalDistributionImageSource
  *

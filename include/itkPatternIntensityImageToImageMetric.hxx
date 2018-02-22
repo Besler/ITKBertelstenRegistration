@@ -1,5 +1,23 @@
-#ifndef __itkPatternIntensityImageToImageMetric_txx
-#define __itkPatternIntensityImageToImageMetric_txx
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
+
+#ifndef itkPatternIntensityImageToImageMetric_hxx
+#define itkPatternIntensityImageToImageMetric_hxx
 
 
 #include "itkPatternIntensityImageToImageMetric.h"
@@ -11,8 +29,7 @@
 #define MinMacro(a,b) ( a < b ? a : b )
 
 
-namespace itk
-{
+namespace itk {
 
 /**
  * Constructor
@@ -22,10 +39,10 @@ namespace itk
   ::PatternIntensityImageToImageMetric()
   {
     m_ResampleImageFilter = 0;
-	  m_DifferenceImageFilter = 0;
+    m_DifferenceImageFilter = 0;
     m_DerivativeDelta = 0.001;
-	  m_Sigma = 10;
-	  m_Radius = 3;
+    m_Sigma = 10;
+    m_Radius = 3;
     m_MaxDimension = FixedImageDimension;
   }
 
@@ -167,15 +184,15 @@ namespace itk
         {
         for(int j = -m_Radius; j<=m_Radius; j++)
           {
-		      for(int i = -m_Radius; i<=m_Radius; i++)
+          for(int i = -m_Radius; i<=m_Radius; i++)
             {
             kernelIndex[0] = fixedIndex[0] + i;
-	          kernelIndex[1] = fixedIndex[1] + j;
+            kernelIndex[1] = fixedIndex[1] + j;
             kernelIndex[2] = fixedIndex[2] + k;
 
             diff = diffImage->GetPixel( fixedIndex ) - diffImage->GetPixel( kernelIndex );
-	          val += ( SigmaSquared )/( SigmaSquared + diff*diff );
-	          }
+            val += ( SigmaSquared )/( SigmaSquared + diff*diff );
+            }
           }
         }
       this->m_NumberOfPixelsCounted++;
@@ -233,6 +250,5 @@ namespace itk
   }
 
 } // end namespace itk
-
 
 #endif
