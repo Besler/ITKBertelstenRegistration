@@ -1,6 +1,23 @@
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
 
-#ifndef __itkGradientDifferenceSingleImageToImageMetric_h
-#define __itkGradientDifferenceSingleImageToImageMetric_h
+#ifndef itkGradientDifferenceSingleImageToImageMetric_h
+#define itkGradientDifferenceSingleImageToImageMetric_h
 
 #include <itkImageToImageMetric.h>
 
@@ -8,8 +25,7 @@
 #include <itkNeighborhoodOperatorImageFilter.h>
 #include <itkResampleImageFilter.h>
 
-namespace itk
-{
+namespace itk {
 
 /** \class GradientDifferenceSingleImageToImageMetric
  * \brief Computes the similarity between two images using the Gradient Difference metric.
@@ -44,6 +60,8 @@ namespace itk
  * the moving image's gradient before subtraction. This factor cannot be set in
  * the current implementation and is always equal to 1.
  *
+ * \ingroup BertelstenRegistration
+ * 
  */
 template < class TFixedImage, class TMovingImage >
 class ITK_EXPORT GradientDifferenceSingleImageToImageMetric :
@@ -52,8 +70,8 @@ public ImageToImageMetric< TFixedImage, TMovingImage>
 public:
 
   /** Standard class typedefs. */
-  typedef GradientDifferenceSingleImageToImageMetric           Self;
-  typedef ImageToImageMetric<TFixedImage, TMovingImage > Superclass;
+  typedef GradientDifferenceSingleImageToImageMetric      Self;
+  typedef ImageToImageMetric<TFixedImage, TMovingImage >  Superclass;
 
   typedef SmartPointer<Self>         Pointer;
   typedef SmartPointer<const Self>   ConstPointer;
@@ -98,7 +116,7 @@ public:
   typedef itk::ResampleImageFilter< MovingImageType,
                                     FixedImageType >  ResampleImageFilterType;
 
-  typedef RealType                               GradientPixelType;
+  typedef RealType                                        GradientPixelType;
   typedef itk::Image<GradientPixelType,
             itkGetStaticConstMacro(FixedImageDimension)>  GradientImageType;
 
@@ -164,7 +182,7 @@ private:
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkGradientDifferenceSingleImageToImageMetric.txx"
+#include "itkGradientDifferenceSingleImageToImageMetric.hxx"
 #endif
 
 #endif

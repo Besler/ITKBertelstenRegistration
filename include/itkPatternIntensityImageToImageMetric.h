@@ -1,5 +1,23 @@
-#ifndef __itkPatternIntensityImageToImageMetric_h
-#define __itkPatternIntensityImageToImageMetric_h
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
+
+#ifndef itkPatternIntensityImageToImageMetric_h
+#define itkPatternIntensityImageToImageMetric_h
 
 
 #include <itkImageToImageMetric.h>
@@ -7,8 +25,7 @@
 #include <itkSubtractImageFilter.h>
 
 
-namespace itk
-{
+namespace itk {
 /** \class PatternIntensityImageToImageMetric
  * \brief Computes Pattern intensity similarity metric between two images to be registered
  *
@@ -39,6 +56,8 @@ namespace itk
  * \warning This implementation of the Pattern Intensity metric only works
  * for images with three dimensions (or images with three dimensions and a
  * single slice)
+ * 
+ * \ingroup BertelstenRegistration
  *
  */
 template < class TFixedImage, class TMovingImage >
@@ -48,8 +67,8 @@ public ImageToImageMetric< TFixedImage, TMovingImage>
 public:
 
   /** Standard class typedefs. */
-  typedef PatternIntensityImageToImageMetric           Self;
-  typedef ImageToImageMetric<TFixedImage, TMovingImage > Superclass;
+  typedef PatternIntensityImageToImageMetric              Self;
+  typedef ImageToImageMetric<TFixedImage, TMovingImage >  Superclass;
 
   typedef SmartPointer<Self>         Pointer;
   typedef SmartPointer<const Self>   ConstPointer;
@@ -66,7 +85,7 @@ public:
     Superclass::CoordinateRepresentationType              CoordinateRepresentationType;
   typedef typename Superclass::MovingImageType            MovingImageType;
   typedef typename Superclass::MovingImagePixelType       MovingImagePixelType;
-  typedef typename Superclass::MovingImageType::Pointer	  MovingImagePointer;
+  typedef typename Superclass::MovingImageType::Pointer   MovingImagePointer;
   typedef typename Superclass::MovingImageConstPointer    MovingImageConstPointer;
 
   typedef typename Superclass::FixedImageType             FixedImageType;
@@ -150,22 +169,20 @@ private:
   PatternIntensityImageToImageMetric(const Self&);  //purposely not implemented
   void operator=(const Self&);                      //purposely not implemented
 
-	typename ResampleImageFilterType::Pointer   m_ResampleImageFilter;
-	typename DifferenceImageFilterType::Pointer m_DifferenceImageFilter;
+  typename ResampleImageFilterType::Pointer   m_ResampleImageFilter;
+  typename DifferenceImageFilterType::Pointer m_DifferenceImageFilter;
 
-	double  m_DerivativeDelta;
-	int     m_Radius;
-	double  m_Sigma;
-  unsigned int m_MaxDimension;
-
-	FixedImageRegionType	m_IterationRegion;
-
+  double                m_DerivativeDelta;
+  int                   m_Radius;
+  double                m_Sigma;
+  unsigned int          m_MaxDimension;
+  FixedImageRegionType  m_IterationRegion;
 };
 
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkPatternIntensityImageToImageMetric.txx"
+#include "itkPatternIntensityImageToImageMetric.hxx"
 #endif
 
 #endif

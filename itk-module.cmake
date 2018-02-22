@@ -15,6 +15,7 @@ itk_module(BertelstenRegistration
   DEPENDS
     ITKCommon
     ITKStatistics
+    ITKRegistrationCommon
   COMPILE_DEPENDS
     ITKImageSources
   TEST_DEPENDS

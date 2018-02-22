@@ -1,13 +1,30 @@
-#ifndef __itkPatchedRayCastInterpolateImageFunction_h
-#define __itkPatchedRayCastInterpolateImageFunction_h
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
+
+#ifndef itkPatchedRayCastInterpolateImageFunction_h
+#define itkPatchedRayCastInterpolateImageFunction_h
 
 #include <itkInterpolateImageFunction.h>
 #include <itkRigid3DTransform.h>
 #include <itkTransform.h>
 #include <itkVector.h>
 
-namespace itk
-{
+namespace itk {
 
 /** \class PatchedRayCastInterpolateImageFunction
  * \brief Projective interpolation of an image at specified positions.
@@ -31,6 +48,8 @@ namespace itk
  *
  * \warning This interpolator works for 3-dimensional images only.
  *
+ * \ingroup BertelstenRegistration
+ * 
  */
 template <class TInputImage, class TCoordRep = double>
 class ITK_EXPORT PatchedRayCastInterpolateImageFunction :
@@ -38,7 +57,7 @@ class ITK_EXPORT PatchedRayCastInterpolateImageFunction :
 {
 public:
   /** Standard class typedefs. */
-  typedef PatchedRayCastInterpolateImageFunction                 Self;
+  typedef PatchedRayCastInterpolateImageFunction          Self;
   typedef InterpolateImageFunction<TInputImage,TCoordRep> Superclass;
   typedef SmartPointer<Self>                              Pointer;
   typedef SmartPointer<const Self>                        ConstPointer;
@@ -203,7 +222,7 @@ private:
 } // namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkPatchedRayCastInterpolateImageFunction.txx"
+#include "itkPatchedRayCastInterpolateImageFunction.hxx"
 #endif
 
 #endif
